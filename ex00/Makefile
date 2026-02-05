@@ -1,11 +1,15 @@
-NAME = EX01
+NAME = EX00
 CPP = c++
 CPPFLAGS = -Wall -Werror -Wextra -MMD
 
 BUILD_DIR = build
 SRC =	main.cpp \
-		ClapTrap.cpp \
-		ScavTrap.cpp
+		Animal.cpp \
+		Dog.cpp \
+		Cat.cpp \
+		WrongAnimal.cpp \
+		WrongCat.cpp
+		
 OBJ = $(patsubst %.cpp,$(BUILD_DIR)/%.o,$(SRC))
 DEP = ${OBJ:.o=.d}
 

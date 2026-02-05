@@ -1,29 +1,40 @@
 #include <iostream>
-#include "ScavTrap.hpp"
+#include "Animal.hpp"
+#include "Dog.hpp"
+#include "Cat.hpp"
+
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
 
 int main()
 {
-	
-	// Test default constructor
-	std::cout << "\nTest default constructor hit points\n" << "------------------------------" << std::endl;
-	ScavTrap defaultScavTrap;
-	defaultScavTrap.takeDamage(99);
-	defaultScavTrap.attack("enemy");
-	defaultScavTrap.takeDamage(1);
-	defaultScavTrap.attack("enemy");
+	{
+		std::cout << "\nFirst case" << std::endl;
 
-	std::cout << "\nTest parameterized constructor repair\n" << "------------------------------" << std::endl;
-	ScavTrap paramterizedScavTrap("A");
-	paramterizedScavTrap.beRepaired(10);
-	paramterizedScavTrap.takeDamage(109);
-	paramterizedScavTrap.attack("enemy");
+		const Animal* meta = new Animal();
+		const Animal* j = new Dog();
+		const Animal* i = new Cat();
+		std::cout << j->getType() << " " << std::endl;
+		std::cout << i->getType() << " " << std::endl;
+		i->makeSound(); //will output the cat sound!
+		j->makeSound();
+		meta->makeSound();
 
+		delete meta;
+		delete j;
+		delete i;
+	}
+	{
+		std::cout << "\nSecond case" << std::endl;
 
-	std::cout << "\nTest gaurdGate()\n" << "------------------------------" << std::endl;
-	ScavTrap gaurdScavTrap;
-	gaurdScavTrap = paramterizedScavTrap;
-	gaurdScavTrap.guardGate();
+		const WrongAnimal* wrongAnimal = new WrongAnimal();
+		const WrongAnimal* wrongCat = new WrongCat();
+		std::cout << wrongCat->getType() << " " << std::endl;
+		wrongCat->makeSound();
+		wrongAnimal->makeSound();
 
-	std::cout << "\n\n";
+		delete wrongAnimal;
+		delete wrongCat;
+	}
 	return 0;
 }
