@@ -4,6 +4,7 @@
 WrongCat::WrongCat() : WrongAnimal()
 {
 	type = "WrongCat";
+	std::cout << "WrongCat default constructor called" << std::endl;
 }
 
 WrongCat::WrongCat(const WrongCat& other)
