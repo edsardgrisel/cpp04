@@ -38,16 +38,21 @@ int main()
 	{
 		Dog* dog = new Dog();
 		Brain* dogBrain = dog->getBrain();
-		dogBrain->addIdea(0, "idea 1");
+		dogBrain->addIdea(0, "idea A");
 
 		Dog* dogCopy = new Dog(*dog);
-		dogBrain->addIdea(1, "idea 2");
-		Brain* dogCopyBrain = dogCopy->getBrain();
+		dogBrain->addIdea(1, "idea B");
+		dogCopy->getBrain()->addIdea(1, "idea C");
 
-		std::cout << "idea 0 "<< dogCopyBrain->getIdea(0) << std::endl;
-		std::cout << "idea 1 "<< dogCopyBrain->getIdea(1) << std::endl;
+		std::cout << "dog original idea at index 0 "<<  dog->getBrain()->getIdea(0) << std::endl;
+		std::cout << "dog original idea at index 1 "<<  dog->getBrain()->getIdea(1) << std::endl;
 
 
+		std::cout << "dog copy idea at index 0 "<<  dogCopy->getBrain()->getIdea(0) << std::endl;
+		std::cout << "dog copy idea at index 1 "<<  dogCopy->getBrain()->getIdea(1) << std::endl;
+
+		delete dog;
+		delete dogCopy;
 	}
 	return 0;
 }
