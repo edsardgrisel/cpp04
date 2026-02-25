@@ -54,5 +54,12 @@ int main()
 		delete dog;
 		delete dogCopy;
 	}
+	{
+		std::cout << "Test two brains created and deconstucted " << std::endl;
+		Dog basic;
+		{
+			Dog tmp = basic;
+		}
+	}
 	return 0;
 }
